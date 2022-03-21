@@ -8,6 +8,8 @@
  */
 
 var args = process.argv.slice(2);
+const isDev = process.argv.slice(process.argv.length-1)[0] === 'watch';
 require('../main.js').build(
-    args[0]||'./release.conf'
+    args[0]||'./release.conf',
+    {isDev: isDev}
 );
