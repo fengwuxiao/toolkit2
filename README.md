@@ -6,6 +6,8 @@
 
 执行 nej-watch ./release.conf
 
+java 工程配置 template 值修改为 DIR_OUTPUT_TP 路径
+
 默认忽略编译输出路径文件(DIR_OUTPUT，DIR_OUTPUT_TP) 支持 DIR_WATCH_IGNORE 参数自定义配置需忽略监听目录，多个逗号分隔
 `DIR_WATCH_IGNORE = /test1,/test2`
 
