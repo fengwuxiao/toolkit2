@@ -1,11 +1,13 @@
 # 说明
 
-本项目 fork 自 https://github.com/genify/toolkit2 保持原来项目功能不变的情况下支持监听文件变更，实时编译
+本项目 fork 自 https://github.com/genify/toolkit2 保持原来项目功能不变的情况下支持监听 DIR_WEBROOT 目录下文件变更，实时编译，此模式下不执行代码压缩以提升编译速度
+
 全局安装 `npm install nej-d -g`
-在项目部署目录（存在 release.conf 配置文件）执行 nej-watch ./release.conf
-loading resource
-parse resource
-cache nej dependency
+
+执行 nej-watch ./release.conf
+
+默认忽略编译输出路径文件(DIR_OUTPUT，DIR_OUTPUT_TP) 支持 DIR_WATCH_IGNORE 参数自定义配置需忽略监听目录，多个逗号分隔
+`DIR_WATCH_IGNORE = /test1,/test2`
 
 # 工具简介
 

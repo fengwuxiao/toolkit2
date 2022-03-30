@@ -7,11 +7,18 @@ const buildFile =  path.join(__dirname, './build')
 const Parser = require('../lib/parser/config.js');
 const args = process.argv.slice(2);
 const config = new Parser({config: args[0] || './release.conf'});
-const {DIR_WEBROOT, DIR_OUTPUT, DIR_OUTPUT_TP} = config._cache
-console .log(DIR_WEBROOT, DIR_OUTPUT, DIR_OUTPUT_TP)
+const {DIR_WEBROOT, DIR_OUTPUT, DIR_OUTPUT_TP, DIR_WATCH_IGNORE} = config._cache
+let ignoreList = []
+try {
+  if (DIR_WATCH_IGNORE) {
+    ignoreList = DIR_WATCH_IGNORE.split(',')
+  }
+  ignoreList = ignoreList.map(item => `${DIR_WEBROOT}${item}/**/*`)
+}catch (err) {}
 console.log(`watching file change ....`);
 chokidar.watch([DIR_WEBROOT], {
   ignored: [
+    ...ignoreList,
     `${DIR_OUTPUT}/**/*`,
     `${DIR_OUTPUT_TP}/**/*`
   ],
